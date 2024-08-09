@@ -1,0 +1,77 @@
+/* Base Tailwind CSS imports */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Use Tailwind's `bg-gray-100` for the background color */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f0f2f5;
+}
+
+#root {
+  /* Use Tailwind's container class instead */
+  width: 100%;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.App {
+ 
+  text-align: center;
+  background-color: white; /* Consider using Tailwind’s `bg-white` class */
+  border-radius: 8px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 80px; 
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  /* Remove or replace with Tailwind classes */
+  background-color: #282c34; /* Use Tailwind’s `bg-gray-800` class */
+  padding: 20px; /* Tailwind’s `p-5` can be used */
+  border-radius: 8px; /* Use Tailwind’s `rounded-lg` class */
+  color: white; /* Use Tailwind’s `text-white` class */
+  margin-bottom: 20px; /* Tailwind’s `mb-5` class can be used */
+}
+
+.App-link {
+  /* Tailwind’s `text-blue-400` class can replace this */
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #root {
+    padding: 10px; /* Tailwind’s `p-2.5` can be used */
+  }
+
+  .App {
+    padding: 10px; /* Use `p-2.5` in Tailwind */
+  }
+}
