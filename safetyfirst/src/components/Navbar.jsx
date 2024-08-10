@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Search, PlusSquare, Heart, User } from 'lucide-react';
+import { Home, Search, PlusSquare, FlagTriangleRight, User , Camera} from 'lucide-react';
 
 const Navbar = () => {
   const location = useLocation();
@@ -9,8 +9,10 @@ const Navbar = () => {
     <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
       <div className="max-w-5xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="text-2xl font-bold">Instagran</Link>
-          
+        <div className="flex items-center space-x-2">
+            <Link to="/" className="text-2xl font-bold">Instagran</Link>
+            <Camera />
+          </div>         
           <div className="hidden md:block">
             <input
               type="text"
@@ -23,7 +25,7 @@ const Navbar = () => {
             <NavLink to="/" icon={<Home size={24} />} active={location.pathname === '/'} />
             <NavLink to="/explore" icon={<Search size={24} />} active={location.pathname === '/explore'} />
             <NavLink to="/register" icon={<PlusSquare size={24} />} active={location.pathname === '/register'} />
-            <NavLink to="/report" icon={<Heart size={24} />} active={location.pathname === '/report'} />
+            <NavLink to="/report" icon={<FlagTriangleRight size={24} />} active={location.pathname === '/report'} />
             <NavLink to="/register" icon={<User size={24} />} active={location.pathname === '/register'} />
           </div>
         </div>
@@ -43,3 +45,4 @@ const NavLink = ({ to, icon, active }) => {
 };
 
 export default Navbar;
+

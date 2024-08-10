@@ -1,9 +1,10 @@
 import React from "react";
+import { Heart, MessageCircle, ChevronDown } from 'lucide-react';
 
 const Home = () => (
   <div className="home-container">
     <h1 className="text-3xl font-bold mb-4 text-primary">Recent Posts</h1>
-    <div className="h-[calc(100vh-200px)] overflow-y-auto">
+    <div className="h-[calc(100vh-200px)] ">
       <RecentPosts />
     </div>
   </div>
@@ -18,6 +19,8 @@ const RecentPosts = () => (
       comments={[
         { user: "User1", text: "Awesome picture!" },
         { user: "User2", text: "Love this!" },
+        { user: "User3", text: "Nice!" },
+        { user: "User3", text: "Let's Meet!!" },
       ]}
     />
     <Post
@@ -34,20 +37,32 @@ const RecentPosts = () => (
 );
 
 const Post = ({ imageUrl, caption, likes, comments }) => (
-  <div className="card p-4 bg-white shadow-md rounded-lg">
+  <div className="card p-4 bg-white shadow-md rounded-lg max-w-md mx-auto">
     <img src={imageUrl} alt="Post" className="rounded-lg mb-4 w-full" />
-    <p className="text-text-light mb-2">{caption}</p>
-    <div className="text-text-light mb-2">
-      <strong>Likes: </strong>
-      {likes}
+    <div className="flex items-center mb-2 space-x-4">
+      <button className="flex items-center text-gray-600 hover:text-red-500">
+        <Heart className="mr-1" size={20} />
+        <span>{likes}</span>
+      </button>
+      <button className="flex items-center text-gray-600 hover:text-blue-500">
+        <MessageCircle className="mr-1" size={20} />
+        <span>{comments.length}</span>
+      </button>
     </div>
+    <p className="text-text-light mb-4">{caption}</p>
     <div className="text-text-light">
-      <h4 className="font-semibold">Comments</h4>
-      {comments.map((comment, index) => (
-        <p key={index}>
+
+        <h4 className="font-semibold">Comments</h4>
+      {comments.slice(0, 2).map((comment, index) => (
+        <p key={index} className="mb-1">
           <strong>{comment.user}:</strong> {comment.text}
         </p>
       ))}
+      {comments.length > 2 && (
+        <button className="text-blue-500 hover:underline flex items-center">
+          View more <ChevronDown size={16} className="ml-1" />
+        </button>
+      )}
     </div>
   </div>
 );

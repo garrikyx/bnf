@@ -11,7 +11,7 @@ const Register = () => {
 
       <div className="flex-1 flex flex-col justify-center items-center p-8">
         <div className="mb-6">
-          <img src="/Singpass_logo.png" alt="Singpass Logo" className="w-25 h-15 mb-4" />
+          <img src="/Singpass_logo.png" alt="Singpass Logo" className="w-30 h-10 mb-4" />
           <h1 className="text-4xl font-bold">Log in with Singpass</h1>
           <p className="text-gray-600">Your trusted digital identity</p>
         </div>
