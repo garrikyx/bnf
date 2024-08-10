@@ -5,21 +5,23 @@ import Home from './components/Home';
 import Register from './components/Register';
 import ReportHarm from './components/ReportHarm';
 import Resources from './components/Resources';
-import './App.css';
+import './styles/main.css';
+import ChatbotWidget from './components/Chatbot';
 
 const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-background flex flex-col">
         <Navbar />
-        <div className="flex-grow container mx-auto p-4 mt-16"> 
+        <main className="flex-grow container mx-auto px-4 main-content">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/report" element={<ReportHarm />} />
             <Route path="/resources" element={<Resources />} />
           </Routes>
-        </div>
+          <ChatbotWidget></ChatbotWidget>
+        </main>
       </div>
     </Router>
   );

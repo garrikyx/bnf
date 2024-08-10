@@ -1,49 +1,43 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, User, Shield, Phone, Menu, X } from 'lucide-react';
+import { Home, Search, PlusSquare, Heart, User } from 'lucide-react';
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   return (
-    <nav className="bg-blue-600 text-white shadow-lg fixed top-0 left-0 right-0 z-50">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          <div className="md:hidden">
-            <button 
-              onClick={() => setIsOpen(!isOpen)} 
-              className="focus:outline-none"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+    <nav className="bg-white border-b border-gray-200 fixed w-full top-0 z-50">
+      <div className="max-w-5xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          <Link to="/" className="text-2xl font-bold">Instagran</Link>
+          
+          <div className="hidden md:block">
+            <input
+              type="text"
+              placeholder="Search"
+              className="bg-gray-100 rounded-md px-3 py-1 focus:outline-none"
+            />
+          </div>
+          
+          <div className="flex items-center space-x-6">
+            <NavLink to="/" icon={<Home size={24} />} active={location.pathname === '/'} />
+            <NavLink to="/explore" icon={<Search size={24} />} active={location.pathname === '/explore'} />
+            <NavLink to="/register" icon={<PlusSquare size={24} />} active={location.pathname === '/register'} />
+            <NavLink to="/report" icon={<Heart size={24} />} active={location.pathname === '/report'} />
+            <NavLink to="/register" icon={<User size={24} />} active={location.pathname === '/register'} />
           </div>
         </div>
       </div>
-      {isOpen && (
-        <div className="md:hidden bg-blue-500">
-          <div className="px-2 pt-2 pb-3 space-y-1">
-            <NavLink to="/" icon={<Home size={18} />} text="Home" mobile active={location.pathname === '/'} />
-            <NavLink to="/register" icon={<User size={18} />} text="Register" mobile active={location.pathname === '/register'} />
-            <NavLink to="/report" icon={<Shield size={18} />} text="Report Harm" mobile active={location.pathname === '/report'} />
-            <NavLink to="/resources" icon={<Phone size={18} />} text="Resources" mobile active={location.pathname === '/resources'} />
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
 
-const NavLink = ({ to, icon, text, mobile, active }) => {
-  const baseClasses = "flex items-center transition-colors duration-300 ease-in-out";
-  const mobileClasses = mobile ? "block px-3 py-2 rounded-md text-base font-medium" : "px-3 py-2 rounded-md text-sm font-medium";
-  const activeClasses = active ? "bg-blue-700 text-white" : "text-blue-100 hover:bg-blue-500 hover:text-white";
+const NavLink = ({ to, icon, active }) => {
+  const activeClass = active ? "text-black" : "text-gray-500 hover:text-black";
 
   return (
-    <Link to={to} className={`${baseClasses} ${mobileClasses} ${activeClasses}`}>
+    <Link to={to} className={`${activeClass} transition-colors duration-300`}>
       {icon}
-      <span className="ml-2">{text}</span>
     </Link>
   );
 };
